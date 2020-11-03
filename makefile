@@ -5,6 +5,9 @@ CFLAGS= -Wall -Wextra -Wpedantic -Wuninitialized -Wundef -Wcast-align -Wstrict-o
 BINARY=shux
 OBJECTS= main.o shux.o
 
+run: $(BINARY)
+	./$(BINARY)
+
 $(BINARY): $(OBJECTS)
 	$(CC) -o $(BINARY) $(OBJECTS)
 
@@ -13,9 +16,6 @@ main.o: main.c shux.h
 
 shux.o: shux.c shux.h
 	$(CC) -c shux.c $(CFLAGS)
-
-run: $(BINARY)
-	./$(BINARY)
 
 clean:
 	rm *.o $(BINARY)
