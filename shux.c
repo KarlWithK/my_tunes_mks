@@ -6,7 +6,6 @@
 
 struct song *new_song(char *n, char *a) {
   struct song *np = malloc(sizeof(struct song));
-
   np->name = strdup(n);
   np->artist = strdup(a);
   np->next = NULL;
@@ -52,7 +51,6 @@ void print_list(struct song *s) {
   }
   printf("]\n");
 }
-
 
 struct song *free_list(struct song *song) {
   struct song *curr = song;

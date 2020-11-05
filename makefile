@@ -12,7 +12,7 @@ $(BINARY): $(OBJECTS)
 	$(CC) -o $(BINARY) $(OBJECTS)
 
 main.o: main.c shux.h
-	$(CC) $(CFLAGS) -c main.c
+	$(CC) $(CFLAGS) -c main.c $(CFLAGS)
 
 shux.o: shux.c shux.h
 	$(CC) $(CFLAGS) -c shux.c
