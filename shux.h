@@ -21,4 +21,6 @@ void print_list(struct song *s);
 
 struct song *random_find(struct song *s);
 
+struct song *free_list(struct song *song);
+
 #endif /* ifndef SHUX_LIST */

@@ -47,10 +47,21 @@ struct song *find_firstS(struct song *s, char *a) {
 void print_list(struct song *s) {
   printf("[");
   while (s) {
-    printf("%s, ", s->name);
+    printf("%s by %s, ", s->name, s->artist);
     s = s->next;
   }
   printf("]\n");
+}
+
+
+struct song *free_list(struct song *song) {
+  struct song *curr = song;
+  while (curr) {
+    curr = curr->next;
+    free_song(song);
+    song = curr;
+  }
+  return song;
 }
 
 /* struct song *random_find(struct song *s) { */
