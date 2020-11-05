@@ -13,7 +13,7 @@ struct song *new_song(char *n, char *a) {
   return np;
 }
 
-struct song *insert_front(struct song *s, char *a, char *n) {
+struct song *insert_front(struct song *s, char *n, char *a) {
   struct song *np = new_song(n, a);
   np->next = s;
   return np;
@@ -26,7 +26,7 @@ struct song *free_song(struct song *s) {
   return NULL;
 }
 
-struct song *find_song(struct song *s, char *a, char *n) {
+struct song *find_song(struct song *s, char *n, char *a) {
   while (s) {
     if (!strcmp(s->artist, a) && !strcmp(s->name, n))
       return s;
