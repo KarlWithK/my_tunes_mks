@@ -75,3 +75,7 @@ struct song *remove_song(struct song* song, struct song* prev_song) {
 	free_song(song);
 	return prev_song;
 }
+
+struct song*[]() {
+	
+}
