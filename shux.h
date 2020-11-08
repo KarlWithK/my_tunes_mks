@@ -30,6 +30,7 @@ struct song *random_find(struct song *s);
 // frees the link list
 struct song *free_list(struct song *song);
 
-
+// removes a song from within the linked list
+struct song *remove_song(struct song* song, struct song* prev_song)
 
 #endif /* ifndef SHUX_LIST */

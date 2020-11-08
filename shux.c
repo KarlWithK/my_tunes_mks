@@ -66,3 +66,12 @@ struct song *free_list(struct song *song) {
 /*   srand(time(NULL)); */
 /*   int i = rand() % 100; */
 /* } */
+
+//Implementation of this depends on whethe we want to pass "master" song struct address and which to remove, 
+//or just the one to remove and prev, or just one to remove and find the previous one sequentially in the function?
+//Also do we want to return null, previous struct, or void?
+struct song *remove_song(struct song* song, struct song* prev_song) {
+	prev_song->next=song->next;
+	free_song(song);
+	return prev_song;
+}
