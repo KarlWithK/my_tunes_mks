@@ -30,6 +30,13 @@ struct song *random_find(struct song *s);
 // frees the link list
 struct song *free_list(struct song *song);
 
+// Inserts a node in the proper order
+struct song *insert_sorted(struct song *song);
 
+// Meges the link list
+struct song *merge(struct song *front, struct song *end);
+
+// sorts the links lists
+struct song *merge_sort(struct song *s);
 
 #endif /* ifndef SHUX_LIST */
