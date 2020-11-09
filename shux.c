@@ -62,10 +62,23 @@ struct song *free_list(struct song *song) {
   return song;
 }
 
-/* struct song *random_find(struct song *s) { */
-/*   srand(time(NULL)); */
-/*   int i = rand() % 100; */
-/* } */
+ struct song *random_find(struct song *s) {
+   int len = 0;
+   struct song *k = s;
+   while(k){
+     len++;
+     k = k->next;
+   }
+   srand(time(NULL));
+   int i = rand() % len;
+   printf("%i\n",i);
+    while (s){
+      if(!i) return s;
+      i--;
+      s = s->next;
+    }
+  return s;
+ } 
 
 //Implementation of this depends on whethe we want to pass "master" song struct address and which to remove, 
 //or just the one to remove and prev, or just one to remove and find the previous one sequentially in the function?
