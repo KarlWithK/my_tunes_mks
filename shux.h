@@ -33,4 +33,7 @@ struct song *free_list(struct song *song);
 // removes a song from within the linked list
 struct song *remove_song(struct song* song, struct song* prev_song);
 
+// creates new song library
+struct song* new_lib();
+
 #endif /* ifndef SHUX_LIST */
