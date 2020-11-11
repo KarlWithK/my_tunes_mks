@@ -136,7 +136,7 @@ void lib_print_by_letter(struct library * lib, char l){
 }
 
 void lib_print_by_artist(struct library * lib, char *a){
-
+	
 }
 
 void lib_print_all(struct library * lib){
