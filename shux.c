@@ -89,12 +89,52 @@ struct song *remove_song(struct song* song, struct song* prev_song) {
 	return prev_song;
 }
 
-//I haven't managed to get it to pass an array of pointers, the new_song part in main says can assign type struct song * to type struct song
-struct song * new_lib() {
-	struct song * lib;
-	lib=malloc(sizeof(void*)*27);  //struct song lib[27];
-	//for(int i = 0; i < 27; i++) {
-	//	lib[i] = NULL;
-	//}
+
+//LIBRARY!!!
+struct library * new_lib() {
+	struct library * lib=malloc(sizeof(struct library));
+	int i;
+	for(i=0;i<27;i++)
+		lib->position[i]=NULL;
 	return lib;
+}
+
+struct library * lib_add_song(struct song * to_add){
+
+}
+
+struct song * lib_find_song(char *n,char *a){
+
+}
+
+char * lib_find_artist(char *a){
+
+}
+
+void lib_print_by_letter(char l){
+
+}
+
+void lib_print_by_artist(char *a){
+
+}
+
+void lib_print_all(struct library * lib){
+
+}
+
+void lib_print_random(struct library *lib){
+
+}
+
+struct library * lib_delete_song(struct song * to_delete){
+
+}
+
+struct library * lib_clear_all(struct library * to_clear){
+
+}
+
+struct library * lib_free(struct library * to_free){
+	
 }

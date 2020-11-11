@@ -2,18 +2,24 @@
 #include "shux.h"
 
 int main() {
-	struct song * lib= new_lib();
+	struct library * lib1= new_lib();
+	lib1->position[0]=new_song("ATM", "JCole");
+	lib1->position[1]=new_song("Bob", "bobby");
 
-	/*
-	struct song *shux[27];
-	for(int i = 0; i < 27; i++) {
-		shux[i] = NULL;
-	}
-	shux[0] = new_song("ATM", "JCole");
-	print_list(shux[0]);
-	struct song *free = free_list(shux[0]);
-	*/
+	print_list(lib1->position[0]);
+	print_list(lib1->position[1]);
+	print_list(lib1->position[2]);
+	print_list(lib1->position[3]);
+	print_list(lib1->position[4]);
+	print_list(lib1->position[5]);
 
+
+
+
+
+
+
+	printf("\n\nRandom Find Test\n\n");
 ///* random_find test
 	struct song* s = new_song("h","A");
 	struct song* k = new_song("h","B");
