@@ -15,7 +15,7 @@ int main() {
 
 
 	printf("\n\nRandom Find Test\n\n");
-///* random_find test
+	///* random_find test
 	struct song* s = new_song("h","A");
 	struct song* k = new_song("h","B");
 	struct song* h = new_song("h","C");

@@ -108,14 +108,19 @@ struct song * lib_find_song(struct library * lib, char *n,char *a){
 	int i;
 	for(i=0;i<27;i++){
 		ret=find_song(lib->position[i], n, a);
-		if(!ret);
+		if(!ret)
 			break;
 	}
 	return ret;
 }
 
-char * lib_find_artist(struct library * lib, char *a){
-
+void lib_find_artist(struct library * lib, char *a){
+	int i;
+	for(i=0;i<27;i++){
+		if(find_firstS(lib->position[i], a))
+			printf("%c was found in the library!", a);
+	}
+	printf("%c was NOT found in the library.", a);
 }
 
 void lib_print_by_letter(struct library * lib, char l){

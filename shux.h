@@ -48,8 +48,8 @@ struct library * lib_add_song(struct library * lib, struct song * to_add);
 // finds song based on name and artist. If not returns null
 struct song * lib_find_song(struct library * lib, char *n,char *a);
 
-//looks for artist in library, returns NULL if not found, if found says that artist found char array
-char * lib_find_artist(struct library * lib, char *a);
+//looks for artist in library, prints whether found or not
+void lib_find_artist(struct library * lib, char *a);
 
 //Print out all the entries under a certain letter.
 void lib_print_by_letter(struct library * lib, char l);
