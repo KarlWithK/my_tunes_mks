@@ -99,23 +99,30 @@ struct library * new_lib() {
 	return lib;
 }
 
-struct library * lib_add_song(struct song * to_add){
+struct library * lib_add_song(struct library * lib, struct song * to_add){
 
 }
 
-struct song * lib_find_song(char *n,char *a){
+struct song * lib_find_song(struct library * lib, char *n,char *a){
+	struct song * ret;
+	int i;
+	for(i=0;i<27;i++){
+		ret=find_song(lib->position[i], n, a);
+		if(!ret);
+			break;
+	}
+	return ret;
+}
+
+char * lib_find_artist(struct library * lib, char *a){
 
 }
 
-char * lib_find_artist(char *a){
+void lib_print_by_letter(struct library * lib, char l){
 
 }
 
-void lib_print_by_letter(char l){
-
-}
-
-void lib_print_by_artist(char *a){
+void lib_print_by_artist(struct library * lib, char *a){
 
 }
 
@@ -129,7 +136,7 @@ void lib_print_random(struct library *lib){
 
 }
 
-struct library * lib_delete_song(struct song * to_delete){
+struct library * lib_delete_song(struct library * lib, struct song * to_delete){
 
 }
 

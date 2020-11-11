@@ -43,19 +43,19 @@ struct library {
 struct library * new_lib();
 
 //correct adds a song struct where appropriate in the library
-struct library * lib_add_song(struct song * to_add);
+struct library * lib_add_song(struct library * lib, struct song * to_add);
 
 // finds song based on name and artist. If not returns null
-struct song * lib_find_song(char *n,char *a);
+struct song * lib_find_song(struct library * lib, char *n,char *a);
 
 //looks for artist in library, returns NULL if not found, if found says that artist found char array
-char * lib_find_artist(char *a);
+char * lib_find_artist(struct library * lib, char *a);
 
 //Print out all the entries under a certain letter.
-void lib_print_by_letter(char l);
+void lib_print_by_letter(struct library * lib, char l);
 
 //looks for all songs by an artist
-void lib_print_by_artist(char *a);
+void lib_print_by_artist(struct library * lib, char *a);
 
 //Prints whole library
 void lib_print_all(struct library * lib);
@@ -64,7 +64,7 @@ void lib_print_all(struct library * lib);
 void lib_print_random(struct library *lib);
 
 //Delete a song
-struct library * lib_delete_song(struct song * to_delete);
+struct library * lib_delete_song(struct library * lib, struct song * to_delete);
 
 //Clear the library.
 struct library * lib_clear_all(struct library * to_clear);
