@@ -6,12 +6,7 @@ int main() {
 	lib1->position[0]=new_song("ATM", "JCole");
 	lib1->position[1]=new_song("Bob", "bobby");
 
-	print_list(lib1->position[0]);
-	print_list(lib1->position[1]);
-	print_list(lib1->position[2]);
-	print_list(lib1->position[3]);
-	print_list(lib1->position[4]);
-	print_list(lib1->position[5]);
+	lib_print_all(lib1);
 
 
 

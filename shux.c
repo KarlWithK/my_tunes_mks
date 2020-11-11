@@ -120,7 +120,9 @@ void lib_print_by_artist(char *a){
 }
 
 void lib_print_all(struct library * lib){
-
+	int i;
+	for(i=0;i<27;i++)
+		print_list(lib->position[i]);
 }
 
 void lib_print_random(struct library *lib){
@@ -134,7 +136,7 @@ struct library * lib_delete_song(struct song * to_delete){
 struct library * lib_clear_all(struct library * to_clear){
 	int i;
 	for(i=0;i<27;i++)
-		free_list(to_clear->position[i]);
+		to_clear->position[i]=free_list(to_clear->position[i]);
 }
 
 struct library * lib_free(struct library * to_free){
