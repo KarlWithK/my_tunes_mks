@@ -90,8 +90,9 @@ struct song *remove_song(struct song* song, struct song* prev_song) {
 }
 
 //I haven't managed to get it to pass an array of pointers, the new_song part in main says can assign type struct song * to type struct song
-struct song* new_lib() {
-	struct song** lib[27];
+struct song * new_lib() {
+	struct song * lib;
+	lib=malloc(sizeof(void*)*27);  //struct song lib[27];
 	//for(int i = 0; i < 27; i++) {
 	//	lib[i] = NULL;
 	//}
