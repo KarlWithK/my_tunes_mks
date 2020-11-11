@@ -2,6 +2,8 @@
 #include "shux.h"
 
 int main() {
+	char a = 'A';
+	printf("char: %c and num: %d\n",a,a);
 	struct library * lib1= new_lib();
 	lib1->position[0]=new_song("ATM", "JCole");
 	lib1->position[1]=new_song("Bob", "bobby");

@@ -124,7 +124,15 @@ void lib_find_artist(struct library * lib, char *a){
 }
 
 void lib_print_by_letter(struct library * lib, char l){
-
+	//Caps
+	if(l>=65&&l<=90)
+		print_list(lib->position[l-65])
+	//Smol
+	else if(l>=97&&l<=122)
+		print_list(lib->position[l-97])
+	//Special Characters
+	else
+		print_list(lib->position[26])
 }
 
 void lib_print_by_artist(struct library * lib, char *a){
