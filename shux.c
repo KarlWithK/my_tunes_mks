@@ -132,9 +132,15 @@ struct library * lib_delete_song(struct song * to_delete){
 }
 
 struct library * lib_clear_all(struct library * to_clear){
-
+	int i;
+	for(i=0;i<27;i++)
+		free_list(to_free->position[i]);
 }
 
 struct library * lib_free(struct library * to_free){
-	
+	int i;
+	for(i=0;i<27;i++)
+		free_list(to_free->position[i]);
+	free(to_free);
+	return NULL;
 }
