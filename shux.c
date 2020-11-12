@@ -73,12 +73,23 @@ void lib_print_random(struct library *lib)
 	int i = rand()%27;
 	int len=0;
 	struct song * s=lib->position[i];
+	print_list(s);
 	while (s){
 		s=s->next;
 		len++;
 	}
-	int j= rand()%len;
-	//printf("%s by %s, ", to_print->name, to_print->artist);
+	if(len){
+		int len2=len;
+		struct song * s=lib->position[i];
+		int j=rand()%len;
+		while(len2){
+			s=s->next;
+			len2--;
+		}
+		printf("%s by %s, ", s->name, s->artist);
+	}
+	else
+		printf("Song list was empty\n");
 }
 
 struct library *lib_delete_song(struct library *lib, struct song *to_delete) {

@@ -9,7 +9,7 @@ int main() {
   lib = lib_add_song(lib, test);
   print_list(lib->position[9]);
 
-  lib_print_random(lib);
+  /* lib_print_random(lib); */
   /* lib_print_by_letter(lib, 'j'); */
   /* lib_clear_all(lib); */
   /* lib_free(lib); */
