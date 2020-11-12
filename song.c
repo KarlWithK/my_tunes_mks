@@ -12,6 +12,10 @@ struct song *new_song(char *n, char *a) {
   return np;
 }
 
+void print_song(struct song *s) {
+  printf("%s by %s, ", s->name, s->artist);
+}
+
 struct song *insert_front(struct song *s, char *n, char *a) {
   struct song *np = new_song(n, a);
   np->next = s;

@@ -9,6 +9,8 @@ struct song {
 // creates a song struct
 struct song *new_song(char *n, char *a);
 
+void print_song(struct song *s);
+
 // insert fronts
 struct song *insert_front(struct song *s, char *n, char *a);
 

@@ -7,11 +7,17 @@ int main() {
   struct library *lib = new_lib();
   struct song *test = new_song("Whip", "JCole");
   lib = lib_add_song(lib, test);
-  print_list(lib->position[9]);
+  struct song *hello = new_song("wrp", "JCole");
+  lib = lib_add_song(lib, hello);
+  struct song *bruh= new_song("Waa", "JCole");
+  lib = lib_add_song(lib,bruh );
+  lib_print_by_letter(lib, 'j');
+  lib = lib_delete_song(lib, bruh);
+  /* print_list(lib->position[9]); */
 
-  /* lib_print_by_letter(lib, 'j'); */
-  /* lib_clear_all(lib); */
-  /* lib_free(lib); */
+  lib_print_by_letter(lib, 'j');
+  lib_clear_all(lib);
+  lib_free(lib);
   /* struct song *bruh = new_song("What", "JCole"); */
   /* test = insert_sorted(test, bruh); */
   /* printf("%d\n", strcmp("Ab", "Whip")); */
