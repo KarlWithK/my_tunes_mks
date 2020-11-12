@@ -5,9 +5,11 @@
 #include <time.h>
 
 struct song *new_song(char *n, char *a) {
-  struct song *np = malloc(sizeof(struct song));
-  np->name = strdup(n);
-  np->artist = strdup(a);
+  struct song *np = (struct song *) malloc(sizeof(struct song));
+  strncpy(np->name, n, sizeof(np->name) - 1);
+  strncpy(np->artist, a, sizeof(np->artist) - 1);
+  /* np->name = strdup(n); */
+  /* np->artist = strdup(a); */
   np->next = NULL;
   return np;
 }
@@ -26,8 +28,8 @@ struct song *insert_front(struct song *s, char *n, char *a) {
 }
 
 struct song *free_song(struct song *s) {
-  free(s->artist);
-  free(s->name);
+  /* free(s->artist); */
+  /* free(s->name); */
   free(s);
   return NULL;
 }

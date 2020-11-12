@@ -1,8 +1,8 @@
 #ifndef SONG_LIST
 #define SONG_LIST
 struct song {
-  char *name;
-  char *artist;
+  char name[80];
+  char artist[80];
   struct song *next;
 };
 
