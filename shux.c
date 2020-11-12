@@ -91,14 +91,41 @@ void lib_print_all(struct library *lib) {
 }
 
 void lib_print_random(struct library *lib) {
+	struct song * rando;
+	int first=1;
+	int j;
+	for (int i = 0; i < 27; i++){
+		if(first&&lib->position[i]){
+			rando=lib->position[i];
+			first=0;
+			int j=1;
+		}
+		if(rando){
+			struct song * temp=lib->position[i];
+			while(temp){
+				print_song(temp);
+				printf("\n");
+				rando=insert_front(rando, temp->name, temp->artist);
+				temp=temp->next;
+				j++;
+			}
+		}
+		int j=0;
+	}
+	printf("Whole List:\n");
+	print_list(rando);
+	printf("\n");
+	print_song(random_find(rando));
+	printf("\n");
+	/*
   struct song *rando;
   srand(time(NULL));
   for (int j = 0; j < 27; j++) {
     int i = rand()%27;
-    /* printf("%i\n", i); */
+     printf("%i\n", i); 
     if (lib->position[i]) {
       struct song *temp = random_find(lib->position[i]);
-      /* rando = insert_sorted(lib->position[i], temp); */
+      rando = insert_sorted(lib->position[i], temp); 
       rando = insert_front(lib->position[i], temp->name, temp->artist);
     }
   }
@@ -106,6 +133,7 @@ void lib_print_random(struct library *lib) {
 		printf("Song list was empty\n");
   else
     print_list(rando);
+	*\
 	/* int len=0; */
 	/* struct song * s=lib->position[i]; */
 	/* while (s){ */

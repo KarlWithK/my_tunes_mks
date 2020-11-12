@@ -38,7 +38,7 @@ int main() {
   lib_print_by_artist(lib, "BTS");
   printf("%s\n", linebreak);
   printf("%s\n", "Testing random");
-  /* lib_print_random(lib); */
+  lib_print_random(lib);
   printf("%s\n", linebreak);
   printf("%s\n", "print_libary");
   lib_print_all(lib);
