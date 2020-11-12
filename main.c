@@ -18,6 +18,12 @@ int main() {
   lib_print_by_letter(lib, 'j');
   lib_clear_all(lib);
   lib_free(lib);
+  print_list(lib->position[9]);
+
+  /* lib_print_random(lib); */
+  /* lib_print_by_letter(lib, 'j'); */
+  /* lib_clear_all(lib); */
+  /* lib_free(lib); */
   /* struct song *bruh = new_song("What", "JCole"); */
   /* test = insert_sorted(test, bruh); */
   /* printf("%d\n", strcmp("Ab", "Whip")); */
