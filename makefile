@@ -1,11 +1,11 @@
 .POSIX:
 .PHONY: run clean
-CC= clang
+CC= gcc
 CFLAGS=
 # CFLAGS= -g -Wall -Wextra -Wpedantic -Wuninitialized -Wundef -Wcast-align -Wstrict-overflow=2 -Wwrite-strings -Wno-format-nonliteral
 BINARY=shux
 OBJECTS= main.o song.o shux.o
-LFLAGS= -lasan
+# LFLAGS= -lasan
 
 $(BINARY): $(OBJECTS)
 	$(CC) -o $(BINARY) $(OBJECTS) $(LFLAGS)

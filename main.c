@@ -40,7 +40,7 @@ int main() {
   printf("%s\n", "Testing random");
   lib_print_random(lib);
   printf("%s\n", linebreak);
-  printf("%s\n", "print_libary");
+  printf("%s\n", "print_library");
   lib_print_all(lib);
   printf("%s\n", linebreak);
   printf("%s\n", "Testing print_letter");

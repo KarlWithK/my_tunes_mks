@@ -38,7 +38,7 @@ struct song *lib_find_song(struct library *lib, char *n, char *a) {
     correct -= 32;
   correct = (correct < 65 || correct > 90) ? 26 : correct - 65;
   if (lib->position[correct]) {
-    return find_song(lib->position[correct], n , a);
+    return find_song(lib->position[correct], n, a);
   }
   return NULL;
 }
@@ -91,150 +91,76 @@ void lib_print_all(struct library *lib) {
 }
 
 void lib_print_random(struct library *lib) {
-  struct song *rando, *temp;
-	int first=1;
-	int skip=1;
-	for (int i = 0; i < 27; i++){
-		if(first&&lib->position[i]){
-			rando=new_song(lib->position[i]->name,lib->position[i]->artist);
-			first=0;
-		}
-		if(rando){
-			struct song * temp=lib->position[i];
-			while(temp){
-				if(!skip)
-					rando=insert_front(rando, temp->name, temp->artist);
-				else
-					skip=0;
-				temp=temp->next;
-			}
-		}
-	}
-	printf("Whole List:\n");
-	print_list(rando);
-	int len=0;
-	struct song * rando2=rando;
-	while(rando2){
-		rando2=rando2->next;
-		len++;
-	}
-	printf("Len:%d\n",len);
-	int * shuffle=malloc(len*sizeof(int));
-	for(int j=0;j<len;j++){
-		shuffle[j]=j;
-	}
-
-	/*
-	for(int j=0;j<len;j++){
-		printf("j:%d\n",j);
-		printf("%d\n",shuffle[j]);
-		printf("\n");
-	}
-	*/
-	
-	for(int j=0;j<len;j++){
-		srand(time(NULL));
-		int rand_shuffle=rand()%(len-j);
-		int temp=shuffle[j];
-		shuffle[j]=shuffle[j+rand_shuffle];
-		shuffle[j+rand_shuffle]=temp;
-	}
-	printf(shuffle);
-	printf("\n");
-	
-	for(int j=0;j<len;j++){
-		printf("%d\n",shuffle[j]);
-		printf("\n");
-	}
-	
-	
-	/*
   struct song *rando;
->>>>>>> 8e13435fa89800d1fa13c800788bc8b8a2245f4b
-  srand(time(NULL));
-  int i;
-  for (int j = 0; j < 27; j++) {
-    i = rand()%27;
-    printf("%i\n", i);
-    /* if (lib->position[i]) { */
-    /*   temp = random_find(lib->position[i]); */
-    /*   rando = insert_sorted(rando, temp); */
-    /* } */
+  int first = 1;
+  int skip = 1;
+  for (int i = 0; i < 27; i++) {
+    if (first && lib->position[i]) {
+      rando = new_song(lib->position[i]->name, lib->position[i]->artist);
+      first = 0;
+    }
+    if (rando) {
+      struct song *temp = lib->position[i];
+      while (temp) {
+        if (!skip)
+          rando = insert_front(rando, temp->name, temp->artist);
+        else
+          skip = 0;
+        temp = temp->next;
+      }
+    }
   }
-  if (!rando)
-        printf("Song list was empty\n");
-  else {
-    /* /1* free_song(temp); *1/ */
-    /* print_list(rando); */
-    /* free_list(rando); */
-    printf("%s", "nice");
+  // printf("Whole List:\n");
+  // print_list(rando);
+  int len = 0;
+  struct song *rando2 = rando;
+  while (rando2) {
+    rando2 = rando2->next;
+    len++;
+  }
+  // printf("Len:%d\n",len);
+  int *shuffle = malloc(len * sizeof(int));
+  for (int j = 0; j < len; j++) {
+    shuffle[j] = j;
+  }
+  /*
+  for(int j=0;j<len;j++){
+          printf("j:%d\n",j);
+          printf("%d\n",shuffle[j]);
+          printf("\n");
+  }
+  */
+
+  for (int j = 0; j < len; j++) {
+    srand(time(NULL));
+    int rand_shuffle = rand() % (len - j);
+    int temp = shuffle[j];
+    shuffle[j] = shuffle[j + rand_shuffle];
+    shuffle[j + rand_shuffle] = temp;
   }
 
+  /*
+  for(int j=0;j<len;j++){
+          printf("%d\n",shuffle[j]);
+          printf("\n");
+  }
+  */
+  int k = 0;
+  struct song *to_print = NULL;
+  while (k < len) {
+    int curr = 0;
+    struct song *temp = rando;
+    while (curr < shuffle[k]) {
+      // printf("shuffle[%d]: %d\n",k,shuffle[k]);
+      // printf("curr: %d\n",curr);
+      temp = temp->next;
+      curr++;
+    }
+    to_print = insert_front(to_print, temp->name, temp->artist);
+    k++;
+  }
+  print_list(to_print);
 }
-
-/*void lib_print_random(struct library *lib) { */
-/*	struct song * rando; */
-/*	int first=1; */
-/*	int j; */
-/*	for (int i = 0; i < 27; i++){ */
-/*		if(first&&lib->position[i]){ */
-/*			rando=lib->position[i]; */
-/*			first=0; */
-/*			int j=1; */
-/*		} */
-/*		if(rando){ */
-/*			struct song * temp=lib->position[i]; */
-/*			while(temp){ */
-/*				print_song(temp); */
-/*				printf("\n"); */
-/*				rando=insert_front(rando, temp->name, temp->artist); */
-/*				temp=temp->next; */
-/*				j++; */
-/*			} */
-/*		} */
-/*		int j=0; */
-/*	} */
-/*	printf("Whole List:\n"); */
-/*	print_list(rando); */
-/*	printf("\n"); */
-/*	print_song(random_find(rando)); */
-/*	printf("\n"); */
-/*	/1* */
-/*  struct song *rando; */
-/*  srand(time(NULL)); */
-/*  for (int j = 0; j < 27; j++) { */
-/*    int i = rand()%27; */
-/*     printf("%i\n", i); */ 
-/*    if (lib->position[i]) { */
-/*      struct song *temp = random_find(lib->position[i]); */
-/*      rando = insert_sorted(lib->position[i], temp); */ 
-/*      rando = insert_front(lib->position[i], temp->name, temp->artist); */
-/*    } */
-/*  } */
-/*  if (!rando) */
-/*		printf("Song list was empty\n"); */
-/*  else */
-/*    print_list(rando); */
-/*	*\ */
-/*	* int len=0; *1/ */
-/*	/1* struct song * s=lib->position[i]; *1/ */
-/*	/1* while (s){ *1/ */
-/*	/1* 	s=s->next; *1/ */
-/*	/1* 	len++; *1/ */
-/*	/1* } *1/ */
-/*	/1* if(len){ *1/ */
-/*	/1* 	int len2=len; *1/ */
-/*	/1* 	struct song * s=lib->position[i]; *1/ */
-/*	/1* 	int j=rand()%len; *1/ */
-/*	/1* 	while(len2){ *1/ */
-/*	/1* 		s=s->next; *1/ */
-/*	/1* 		len2--; *1/ */
-/*	/1* 	} *1/ */
-/*	/1* 	printf("%s by %s, ", s->name, s->artist); *1/ */
-/*	/1* } *1/ */
-/*	/1* else *1/ */
-/*	/1* 	printf("Song list was empty\n"); *1/ */
-/*} */
 
 struct library *lib_delete_song(struct library *lib, struct song *to_delete) {
   int correct = get_correct_index(to_delete);
