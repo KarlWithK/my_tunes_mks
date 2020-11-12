@@ -13,7 +13,10 @@ struct song *new_song(char *n, char *a) {
 }
 
 void print_song(struct song *s) {
-  printf("%s by %s, ", s->name, s->artist);
+  if (s)
+    printf("%s by %s, ", s->name, s->artist);
+  else
+    printf("node not found");
 }
 
 struct song *insert_front(struct song *s, char *n, char *a) {
@@ -75,7 +78,7 @@ struct song *random_find(struct song *s) {
   }
   srand(time(NULL));
   int i = rand() % len;
-  printf("%i\n", i);
+  /* printf("%i\n", i); */
   while (s) {
     if (!i)
       return s;

@@ -33,14 +33,14 @@ struct library *lib_add_song(struct library *lib, struct song *to_add) {
 }
 
 struct song *lib_find_song(struct library *lib, char *n, char *a) {
-  struct song *ret;
-  int i;
-  for (i = 0; i < 27; i++) {
-    ret = find_song(lib->position[i], n, a);
-    if (!ret)
-      break;
+  int correct = a[0];
+  if (correct > 90)
+    correct -= 32;
+  correct = (correct < 65 || correct > 90) ? 26 : correct - 65;
+  if (lib->position[correct]) {
+    return find_song(lib->position[correct], n , a);
   }
-  return ret;
+  return NULL;
 }
 
 void lib_find_artist(struct library *lib, char *a) {
@@ -90,29 +90,40 @@ void lib_print_all(struct library *lib) {
     print_list(lib->position[i]);
 }
 
-void lib_print_random(struct library *lib)
-{
-	srand(time(NULL));
-	int i = rand()%27;
-	int len=0;
-	struct song * s=lib->position[i];
-	print_list(s);
-	while (s){
-		s=s->next;
-		len++;
-	}
-	if(len){
-		int len2=len;
-		struct song * s=lib->position[i];
-		int j=rand()%len;
-		while(len2){
-			s=s->next;
-			len2--;
-		}
-		printf("%s by %s, ", s->name, s->artist);
-	}
-	else
+void lib_print_random(struct library *lib) {
+  struct song *rando;
+  srand(time(NULL));
+  for (int j = 0; j < 27; j++) {
+    int i = rand()%27;
+    /* printf("%i\n", i); */
+    if (lib->position[i]) {
+      struct song *temp = random_find(lib->position[i]);
+      /* rando = insert_sorted(lib->position[i], temp); */
+      rando = insert_front(lib->position[i], temp->name, temp->artist);
+    }
+  }
+  if (!rando)
 		printf("Song list was empty\n");
+  else
+    print_list(rando);
+	/* int len=0; */
+	/* struct song * s=lib->position[i]; */
+	/* while (s){ */
+	/* 	s=s->next; */
+	/* 	len++; */
+	/* } */
+	/* if(len){ */
+	/* 	int len2=len; */
+	/* 	struct song * s=lib->position[i]; */
+	/* 	int j=rand()%len; */
+	/* 	while(len2){ */
+	/* 		s=s->next; */
+	/* 		len2--; */
+	/* 	} */
+	/* 	printf("%s by %s, ", s->name, s->artist); */
+	/* } */
+	/* else */
+	/* 	printf("Song list was empty\n"); */
 }
 
 struct library *lib_delete_song(struct library *lib, struct song *to_delete) {

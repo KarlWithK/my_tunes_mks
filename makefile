@@ -6,9 +6,6 @@ CFLAGS=
 BINARY=shux
 OBJECTS= main.o song.o shux.o
 
-run: $(BINARY)
-	./$(BINARY)
-
 $(BINARY): $(OBJECTS)
 	$(CC) -o $(BINARY) $(OBJECTS)
 
@@ -20,6 +17,9 @@ shux.o: shux.c shux.h song.h
 
 song.o: song.c song.h
 	$(CC) $(CFLAGS) -c song.c
+
+run: $(BINARY)
+	./$(BINARY)
 
 clean:
 	rm *.o $(BINARY)
