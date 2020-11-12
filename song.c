@@ -104,6 +104,9 @@ struct song *remove_song(struct song *head, struct song *remove) {
 }
 
 struct song *insert_sorted(struct song *head, struct song *new_song) {
+  if (!head) {
+    return insert_front(head, new_song->name, new_song->artist);
+  }
   struct song *prev = NULL, *curr = head;
   while (curr) {
     if (!strcmp(curr->artist, new_song->artist)) {
@@ -112,7 +115,7 @@ struct song *insert_sorted(struct song *head, struct song *new_song) {
         if (prev) {
           prev->next = new_song;
           return head;
-        } else // will not have anything inserted
+        } else 
           return new_song;
       }
     } else if (strcmp(curr->artist, new_song->artist) > 0) {
@@ -120,8 +123,9 @@ struct song *insert_sorted(struct song *head, struct song *new_song) {
       if (prev) {
         prev->next = new_song;
         return head;
-      } else // will not have anything inserted
+      } else {
         return new_song;
+      }
     }
     prev = curr;
     curr = curr->next;

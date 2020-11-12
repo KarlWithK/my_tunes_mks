@@ -5,7 +5,23 @@
 int main() {
   char linebreak[] = "====================================";
   struct library *lib = new_lib();
-  /* lib[0] = */
+  struct song *test = new_song("Whip", "JCole");
+  lib = lib_add_song(lib, test);
+  print_list(lib->position[9]);
+
+  /* lib_print_by_letter(lib, 'j'); */
+  /* lib_clear_all(lib); */
+  /* lib_free(lib); */
+  /* struct song *bruh = new_song("What", "JCole"); */
+  /* test = insert_sorted(test, bruh); */
+  /* printf("%d\n", strcmp("Ab", "Whip")); */
+  /* lib->position[0] = insert_sorted(lib->position[0], test); */
+  /* lib->position[0] = insert_sorted(lib->position[0], new_song("Ab", "JCole")); */
+  /* print_list(test); */
+  /* test = remove_song(test, bruh); */
+  /* print_list(test); */
+  /* /1* lib_free(lib); *1/ */
+  /* free_list(test); */
 }
 
 /* char a = 'A';*/

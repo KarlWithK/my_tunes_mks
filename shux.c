@@ -15,7 +15,16 @@ struct library *new_lib() {
 }
 
 struct library *lib_add_song(struct library *lib, struct song *to_add) {
-  return NULL;
+  char first_letter = to_add->artist[0];
+  if (first_letter > 90)
+    first_letter -= 32;
+  if (first_letter < 65 || first_letter > 90) {
+    lib->position[26] = insert_sorted(lib->position[26], to_add);
+  } else {
+    int correct_index = first_letter - 65;
+    lib->position[correct_index] = insert_sorted(lib->position[correct_index], to_add);
+  }
+  return lib;
 }
 
 struct song *lib_find_song(struct library *lib, char *n, char *a) {

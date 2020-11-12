@@ -34,5 +34,4 @@ struct song *free_list(struct song *song);
 struct song *remove_song(struct song *song, struct song *prev_song);
 
 struct song *insert_sorted(struct song *, struct song *new_song);
-
 #endif /* ifndef SHUX_LIST */
